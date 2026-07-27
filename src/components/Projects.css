@@ -1,0 +1,462 @@
+/* ============================
+   Projects Section
+   ============================ */
+
+.projects {
+  background: var(--dark-bg);
+  position: relative;
+  padding: 5rem 0;
+}
+
+.projects h2 {
+  margin-bottom: 4rem;
+}
+
+/* ============================
+   Accordion
+   ============================ */
+
+.projects-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.accordion-item {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.accordion-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.08);
+}
+
+.accordion-item.open {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 25px 60px rgba(59, 130, 246, 0.18);
+}
+
+/* ============================
+   Header
+   ============================ */
+
+.accordion-header {
+  width: 100%;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.accordion-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+.accordion-header h3 {
+  margin: 0;
+  color: var(--light-text);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.project-role {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  background: rgba(59, 130, 246, 0.12);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  display: inline-block;
+  width: fit-content;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+/* ============================
+   Arrow
+   ============================ */
+
+.accordion-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--primary-color);
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accordion-icon svg {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accordion-icon.open {
+  background: var(--primary-color);
+  color: white;
+}
+
+.accordion-icon.open svg {
+  transform: rotate(180deg);
+}
+
+/* ============================
+   Accordion body
+   ============================ */
+
+.accordion-body {
+  padding: 0 32px 32px;
+}
+
+.accordion-body::before {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-bottom: 28px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================
+   Description
+   ============================ */
+
+.project-description {
+  color: var(--gray-text);
+  line-height: 1.8;
+  font-size: 0.96rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================
+   Features
+   ============================ */
+
+.project-features {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-features h4 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.project-features ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-features li {
+  position: relative;
+  padding: 0.65rem 0 0.65rem 1.6rem;
+  color: var(--gray-text);
+  line-height: 1.6;
+}
+
+.project-features li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+}
+
+/* ============================
+   Highlights
+   ============================ */
+
+.project-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.highlight-tag {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.10);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: var(--primary-color);
+  font-size: 0.82rem;
+  transition: all 0.25s ease;
+}
+
+.highlight-tag:hover {
+  transform: translateY(-2px);
+  background: rgba(59, 130, 246, 0.18);
+}
+
+/* ============================
+   Gallery — Grid Layout
+   ============================ */
+
+.project-gallery {
+  margin: 2.5rem 0;
+}
+
+.gallery-title {
+  color: var(--light-text);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-grid-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-grid-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.gallery-grid-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 10px;
+  transition: transform 0.4s ease;
+}
+
+.gallery-grid-item:hover .gallery-grid-image {
+  transform: scale(1.04);
+}
+
+/* ============================
+   Technologies
+   ============================ */
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech-tag {
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gray-text);
+  transition: all 0.25s ease;
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* ============================
+   Lightbox Modal
+   ============================ */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 2rem;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Close button */
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* Navigation arrows */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-nav:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+  left: -70px;
+}
+
+.lightbox-next {
+  right: -70px;
+}
+
+/* Counter */
+.lightbox-counter {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================
+   Mobile
+   ============================ */
+
+@media (max-width: 768px) {
+  .accordion-header {
+    padding: 22px;
+  }
+
+  .accordion-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .accordion-body {
+    padding: 0 22px 22px;
+  }
+
+  .accordion-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .lightbox-content {
+    max-width: 95vw;
+    max-height: 75vh;
+    padding: 0 1rem;
+  }
+
+  .lightbox-close {
+    top: -45px;
+    right: 10px;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .lightbox-prev {
+    left: -25px;
+  }
+
+  .lightbox-next {
+    right: -25px;
+  }
+
+  .lightbox-counter {
+    bottom: -40px;
+  }
+}
