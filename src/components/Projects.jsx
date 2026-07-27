@@ -7,39 +7,35 @@ const containerVariants = {
     hidden: {},
     show: {
         transition: {
-            staggerChildren: 0.12,
-            delayChildren: 0.08,
+            staggerChildren: 0.1,
+            delayChildren: 0.05,
         },
     },
 };
 
-const itemVariants = {
+const cardVariants = {
     hidden: {
         opacity: 0,
-        y: 18,
+        y: 30,
     },
     show: {
         opacity: 1,
         y: 0,
         transition: {
-            duration: 0.45,
+            duration: 0.5,
             ease: [0.22, 1, 0.36, 1],
         },
     },
 };
 
 function Projects() {
-    const [expandedProjects, setExpandedProjects] = useState([]);
+    const [expandedIndex, setExpandedIndex] = useState(null);
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
     const [activeProjectImages, setActiveProjectImages] = useState([]);
 
     const toggleProject = (index) => {
-        setExpandedProjects((prev) =>
-            prev.includes(index)
-                ? prev.filter((i) => i !== index)
-                : [...prev, index]
-        );
+        setExpandedIndex((prev) => (prev === index ? null : index));
     };
 
     const openLightbox = (images, index) => {
@@ -69,31 +65,70 @@ function Projects() {
             <div className="container">
                 <h2>Featured Projects</h2>
 
-                <div className="projects-accordion">
+                <motion.div
+                    className="projects-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: '-50px' }}
+                >
                     {projects.map((project, index) => {
-                        const isOpen = expandedProjects.includes(index);
+                        const isExpanded = expandedIndex === index;
+                        const heroImage = project.images?.[0];
+
                         return (
-                            <div
+                            <motion.div
                                 key={index}
-                                className={`accordion-item ${isOpen ? 'open' : ''}`}
+                                className={`project-card ${isExpanded ? 'expanded' : ''}`}
+                                variants={cardVariants}
+                                layout
+                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                             >
-                                <button
-                                    className="accordion-header"
+                                {/* Card Header — always visible */}
+                                <div
+                                    className="card-header"
                                     onClick={() => toggleProject(index)}
                                 >
-                                    <div className="accordion-header-left">
-                                        <h3>{project.title}</h3>
-                                        <span className="project-role">{project.role}</span>
+                                    {heroImage && (
+                                        <div className="card-image-wrapper">
+                                            <img
+                                                src={heroImage}
+                                                alt={`${project.title} preview`}
+                                                className="card-hero-image"
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    )}
+
+                                    <div className="card-info">
+                                        <div className="card-title-row">
+                                            <h3>{project.title}</h3>
+                                            <span className="card-role">{project.role}</span>
+                                        </div>
+
+                                        <p className="card-description">
+                                            {project.description}
+                                        </p>
+
+                                        <div className="card-tech-tags">
+                                            {project.technologies.slice(0, 5).map((tech, i) => (
+                                                <span key={i} className="card-tech-tag">{tech}</span>
+                                            ))}
+                                            {project.technologies.length > 5 && (
+                                                <span className="card-tech-tag more-tag">
+                                                    +{project.technologies.length - 5}
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
 
-                                    <span
-                                        className={`accordion-icon ${isOpen ? 'open' : ''}`}
-                                    >
+                                    <div className="card-expand-icon">
                                         <svg
-                                            width="22"
-                                            height="22"
+                                            width="20"
+                                            height="20"
                                             viewBox="0 0 24 24"
                                             fill="none"
+                                            className={`expand-arrow ${isExpanded ? 'open' : ''}`}
                                         >
                                             <path
                                                 d="M8 10l4 4 4-4"
@@ -103,122 +138,86 @@ function Projects() {
                                                 strokeLinejoin="round"
                                             />
                                         </svg>
-                                    </span>
-                                </button>
+                                    </div>
+                                </div>
 
+                                {/* Expanded Details */}
                                 <AnimatePresence initial={false}>
-                                    {isOpen && (
+                                    {isExpanded && (
                                         <motion.div
-                                            initial={{
-                                                height: 0,
-                                                opacity: 0,
-                                            }}
-                                            animate={{
-                                                height: 'auto',
-                                                opacity: 1,
-                                            }}
-                                            exit={{
-                                                height: 0,
-                                                opacity: 0,
-                                            }}
-                                            transition={{
-                                                duration: 0.45,
-                                                ease: [0.22, 1, 0.36, 1],
-                                            }}
+                                            className="card-details"
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                             style={{ overflow: 'hidden' }}
                                         >
-                                            <motion.div
-                                                className="accordion-body"
-                                                variants={containerVariants}
-                                                initial="hidden"
-                                                animate="show"
-                                            >
-                                                <motion.p
-                                                    variants={itemVariants}
-                                                    className="project-description"
-                                                >
-                                                    {project.description}
-                                                </motion.p>
-
-                                                {project.detailedFeatures && (
-                                                    <motion.div
-                                                        variants={itemVariants}
-                                                        className="project-features"
-                                                    >
-                                                        <h4>Key Features</h4>
-
-                                                        <ul>
-                                                            {project.detailedFeatures.map((feature, i) => (
-                                                                <li key={i}>{feature}</li>
+                                            <div className="card-details-inner">
+                                                {/* Highlights */}
+                                                {project.highlights && (
+                                                    <div className="detail-section highlights-section">
+                                                        <h4>Highlights</h4>
+                                                        <div className="highlights-row">
+                                                            {project.highlights.map((h, i) => (
+                                                                <span key={i} className="highlight-tag">✓ {h}</span>
                                                             ))}
-                                                        </ul>
-                                                    </motion.div>
+                                                        </div>
+                                                    </div>
                                                 )}
 
-                                                <motion.div
-                                                    variants={itemVariants}
-                                                    className="project-highlights"
-                                                >
-                                                    {project.highlights.map((highlight, i) => (
-                                                        <motion.span
-                                                            key={i}
-                                                            variants={itemVariants}
-                                                            className="highlight-tag"
-                                                        >
-                                                            ✓ {highlight}
-                                                        </motion.span>
-                                                    ))}
-                                                </motion.div>
+                                                {/* Key Features */}
+                                                {project.detailedFeatures && (
+                                                    <div className="detail-section features-section">
+                                                        <h4>Key Features</h4>
+                                                        <ul>
+                                                            {project.detailedFeatures.map((f, i) => (
+                                                                <li key={i}>{f}</li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
 
-                                                {project.images && project.images.length > 0 && (
-                                                    <motion.div
-                                                        variants={itemVariants}
-                                                        className="project-gallery"
-                                                    >
-                                                        <h4 className="gallery-title">Gallery</h4>
-                                                        <div className="gallery-grid">
-                                                            {project.images.map((image, i) => (
+                                                {/* Full Gallery */}
+                                                {project.images && project.images.length > 1 && (
+                                                    <div className="detail-section gallery-section">
+                                                        <h4>Gallery</h4>
+                                                        <div className="card-gallery-grid">
+                                                            {project.images.map((img, i) => (
                                                                 <motion.div
                                                                     key={i}
-                                                                    className="gallery-grid-item"
+                                                                    className="card-gallery-item"
                                                                     whileHover={{ scale: 1.03 }}
                                                                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                                                                     onClick={() => openLightbox(project.images, i)}
                                                                 >
                                                                     <img
-                                                                        src={image}
+                                                                        src={img}
                                                                         alt={`${project.title} screenshot ${i + 1}`}
-                                                                        className="gallery-grid-image"
                                                                         loading="lazy"
                                                                     />
                                                                 </motion.div>
                                                             ))}
                                                         </div>
-                                                    </motion.div>
+                                                    </div>
                                                 )}
 
-                                                <motion.div
-                                                    variants={itemVariants}
-                                                    className="project-technologies"
-                                                >
-                                                    {project.technologies.map((tech, i) => (
-                                                        <motion.span
-                                                            key={i}
-                                                            variants={itemVariants}
-                                                            className="tech-tag"
-                                                        >
-                                                            {tech}
-                                                        </motion.span>
-                                                    ))}
-                                                </motion.div>
-                                            </motion.div>
+                                                {/* All Technologies */}
+                                                <div className="detail-section tech-section">
+                                                    <h4>Technologies</h4>
+                                                    <div className="tech-row">
+                                                        {project.technologies.map((tech, i) => (
+                                                            <span key={i} className="tech-tag">{tech}</span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
-                            </div>
+                            </motion.div>
                         );
                     })}
-                </div>
+                </motion.div>
             </div>
 
             {/* Lightbox Modal */}

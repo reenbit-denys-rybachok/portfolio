@@ -13,16 +13,20 @@
 }
 
 /* ============================
-   Accordion
+   Card Grid
    ============================ */
 
-.projects-accordion {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-.accordion-item {
+/* ============================
+   Project Card
+   ============================ */
+
+.project-card {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.04),
@@ -31,102 +35,172 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 22px;
   overflow: hidden;
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.accordion-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(59, 130, 246, 0.45);
+.project-card:not(.expanded):hover {
+  border-color: rgba(59, 130, 246, 0.35);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.08);
 }
 
-.accordion-item.open {
+.project-card.expanded {
   border-color: rgba(59, 130, 246, 0.6);
   box-shadow: 0 25px 60px rgba(59, 130, 246, 0.18);
 }
 
 /* ============================
-   Header
+   Card Header (always visible, clickable)
    ============================ */
 
-.accordion-header {
-  width: 100%;
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
   padding: 28px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  border: none;
   cursor: pointer;
-  color: inherit;
 }
 
-.accordion-header-left {
+/* Hero Image */
+.card-image-wrapper {
+  flex-shrink: 0;
+  width: 200px;
+  height: 130px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 6px;
+  transition: transform 0.4s ease;
+}
+
+.project-card:not(.expanded):hover .card-hero-image {
+  transform: scale(1.04);
+}
+
+/* Card Info */
+.card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title-row {
   display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  text-align: left;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
 }
 
-.accordion-header h3 {
+.card-title-row h3 {
   margin: 0;
   color: var(--light-text);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
-.project-role {
-  font-size: 0.8rem;
+.card-role {
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--primary-color);
   background: rgba(59, 130, 246, 0.12);
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  display: inline-block;
-  width: fit-content;
   letter-spacing: 0.02em;
   border: 1px solid rgba(59, 130, 246, 0.15);
+  white-space: nowrap;
 }
 
-/* ============================
-   Arrow
-   ============================ */
+.card-description {
+  color: var(--gray-text);
+  line-height: 1.7;
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
-.accordion-icon {
-  width: 46px;
-  height: 46px;
+/* Tech tags in card */
+.card-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.card-tech-tag {
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gray-text);
+  font-size: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.card-tech-tag:hover {
+  transform: translateY(-1px);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.card-tech-tag.more-tag {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Expand Icon */
+.card-expand-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background: rgba(59, 130, 246, 0.12);
   color: var(--primary-color);
-  flex-shrink: 0;
+  margin-top: 0.3rem;
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.accordion-icon svg {
+.project-card:not(.expanded):hover .card-expand-icon {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.expand-arrow {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.accordion-icon.open {
+.expand-arrow.open {
+  transform: rotate(180deg);
+}
+
+.expanded .card-expand-icon {
   background: var(--primary-color);
   color: white;
 }
 
-.accordion-icon.open svg {
-  transform: rotate(180deg);
-}
-
 /* ============================
-   Accordion body
+   Card Details (expandable)
    ============================ */
 
-.accordion-body {
+.card-details-inner {
   padding: 0 32px 32px;
 }
 
-.accordion-body::before {
+.card-details-inner::before {
   content: "";
   display: block;
   height: 1px;
@@ -134,67 +208,27 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ============================
-   Description
-   ============================ */
-
-.project-description {
-  color: var(--gray-text);
-  line-height: 1.8;
-  font-size: 0.96rem;
+/* Detail Sections */
+.detail-section {
   margin-bottom: 2rem;
 }
 
-/* ============================
-   Features
-   ============================ */
-
-.project-features {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.project-features h4 {
+.detail-section h4 {
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--primary-color);
 }
 
-.project-features ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.project-features li {
-  position: relative;
-  padding: 0.65rem 0 0.65rem 1.6rem;
-  color: var(--gray-text);
-  line-height: 1.6;
-}
-
-.project-features li::before {
-  content: "▹";
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-}
-
-/* ============================
-   Highlights
-   ============================ */
-
-.project-highlights {
+/* Highlights */
+.highlights-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 2rem;
 }
 
 .highlight-tag {
-  padding: 0.55rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
   background: rgba(59, 130, 246, 0.10);
   border: 1px solid rgba(59, 130, 246, 0.35);
@@ -208,79 +242,88 @@
   background: rgba(59, 130, 246, 0.18);
 }
 
-/* ============================
-   Gallery — Grid Layout
-   ============================ */
-
-.project-gallery {
-  margin: 2.5rem 0;
+/* Features */
+.features-section {
+  padding: 1.5rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.gallery-title {
-  color: var(--light-text);
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
+.features-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.25rem;
-}
-
-.gallery-grid-item {
+.features-section li {
   position: relative;
-  border-radius: 16px;
+  padding: 0.65rem 0 0.65rem 1.6rem;
+  color: var(--gray-text);
+  line-height: 1.6;
+}
+
+.features-section li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+}
+
+/* Gallery in card details */
+.card-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card-gallery-item {
+  position: relative;
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(15, 23, 42, 1);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.gallery-grid-item:hover {
-  transform: translateY(-6px);
+.card-gallery-item:hover {
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.3);
   border-color: rgba(59, 130, 246, 0.35);
 }
 
-.gallery-grid-image {
+.card-gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
-  padding: 10px;
+  padding: 8px;
   transition: transform 0.4s ease;
 }
 
-.gallery-grid-item:hover .gallery-grid-image {
+.card-gallery-item:hover img {
   transform: scale(1.04);
 }
 
-/* ============================
-   Technologies
-   ============================ */
-
-.project-technologies {
+/* Tech row */
+.tech-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.65rem;
 }
 
 .tech-tag {
-  padding: 0.55rem 1rem;
+  padding: 0.5rem 0.9rem;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--gray-text);
+  font-size: 0.82rem;
   transition: all 0.25s ease;
 }
 
@@ -292,7 +335,7 @@
 }
 
 /* ============================
-   Lightbox Modal
+   Lightbox Modal (unchanged)
    ============================ */
 
 .lightbox-overlay {
@@ -328,7 +371,6 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Close button */
 .lightbox-close {
   position: absolute;
   top: -50px;
@@ -354,7 +396,6 @@
   transform: scale(1.1);
 }
 
-/* Navigation arrows */
 .lightbox-nav {
   position: absolute;
   top: 50%;
@@ -390,7 +431,6 @@
   right: -70px;
 }
 
-/* Counter */
 .lightbox-counter {
   position: absolute;
   bottom: -50px;
@@ -405,30 +445,46 @@
 }
 
 /* ============================
-   Mobile
+   Responsive
    ============================ */
 
-@media (max-width: 768px) {
-  .accordion-header {
+@media (max-width: 900px) {
+  .card-header {
+    flex-direction: column;
     padding: 22px;
   }
 
-  .accordion-header h3 {
+  .card-image-wrapper {
+    width: 100%;
+    height: 180px;
+  }
+
+  .card-info {
+    width: 100%;
+  }
+
+  .card-title-row h3 {
     font-size: 1.3rem;
   }
 
-  .accordion-body {
+  .card-expand-icon {
+    align-self: flex-end;
+    margin-top: -0.5rem;
+  }
+
+  .card-details-inner {
     padding: 0 22px 22px;
   }
+}
 
-  .accordion-icon {
-    width: 40px;
-    height: 40px;
+@media (max-width: 768px) {
+  .card-image-wrapper {
+    height: 150px;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
+  .card-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.85rem;
   }
 
   .lightbox-content {
