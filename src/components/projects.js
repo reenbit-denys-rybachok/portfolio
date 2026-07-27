@@ -8,6 +8,10 @@ import nm2 from '../assets/nm-2.png';
 import nm3 from '../assets/nm-3.png';
 import nm4 from '../assets/nm-4.png';
 import nm5 from '../assets/nm-5.png';
+import up1 from '../assets/up-1.png';
+import up2 from '../assets/up-2.png';
+import up3 from '../assets/up-3.png';
+import up4 from '../assets/up-4.png';
 
 export const projects = [
   {
@@ -125,6 +129,12 @@ export const projects = [
       'Participant registration',
       'Results processing',
       'Dynamic Forms'
+    ],
+    images: [
+      up1,
+        up2,
+        up3,
+        up4
     ]
   }
 ];
