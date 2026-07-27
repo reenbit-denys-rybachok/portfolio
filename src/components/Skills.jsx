@@ -1,3 +1,4 @@
+import TechTree from './TechTree'
 import './Skills.css'
 
 const skillCategories = [
@@ -60,7 +61,8 @@ const skillCategories = [
       'Microsoft API',
       'Amazon Product Advertising API',
       'OAuth Authentication',
-      'Social Login Providers'
+      'Social Login Providers',
+      'Stripe',
     ]
   },
   {
@@ -74,9 +76,9 @@ const skillCategories = [
   {
     title: 'AI & Tools',
     skills: [
-      'Claude',
       'Codex',
       'ChatGPT',
+      'Claude'
     ]
   }
 ]
@@ -86,20 +88,7 @@ function Skills() {
     <section className="skills" id="skills">
       <div className="container">
         <h2>Technical Skills</h2>
-        <div className="skills-grid">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category">
-              <h3 className="category-title">{category.title}</h3>
-              <div className="skills-list">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="skill-item">
-                    {skill}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <TechTree categories={skillCategories} />
       </div>
     </section>
   )
