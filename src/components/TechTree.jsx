@@ -10,7 +10,6 @@ import {
   Link,
   Cloud,
   Bot,
-  Braces,
 } from 'lucide-react';
 import './TechTree.css';
 

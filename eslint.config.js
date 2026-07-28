@@ -14,6 +14,12 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
 
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+
       globals: {
         ...globals.browser,
       },
@@ -31,13 +37,13 @@ export default [
     },
 
     rules: {
-      // React
-      'react/react-in-jsx-scope': 'off',
-
-      // Hooks
+      ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
+      'react/no-unescaped-entities': 'off',
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-vars': 'error',
 
-      // Загальні правила
       'no-unused-vars': 'warn',
       'no-console': 'warn',
       eqeqeq: 'error',

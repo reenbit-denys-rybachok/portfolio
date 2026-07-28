@@ -52,7 +52,6 @@ const skillCategories = [
 ];
 
 function Skills() {
-  console.log(test);
   return (
     <section className="skills" id="skills">
       <div className="container">
@@ -62,6 +61,5 @@ function Skills() {
     </section>
   );
 }
-
 
 export default Skills;
