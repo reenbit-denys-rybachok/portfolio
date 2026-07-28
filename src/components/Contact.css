@@ -54,7 +54,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   border-radius: 0.75rem;
   color: white;
   flex-shrink: 0;
@@ -101,7 +105,11 @@
 }
 
 .social-btn:hover {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   border-color: transparent;
   color: white;
   transform: translateY(-5px);

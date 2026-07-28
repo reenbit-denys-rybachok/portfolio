@@ -18,7 +18,7 @@ export const projects = [
     title: 'Values Cart',
     role: 'Full-Stack Developer',
     description:
-    'A comprehensive platform consisting of four interconnected applications: a cross-browser extension (Chrome, Safari, Edge), a marketplace for Ukrainian-made products, an admin panel for managing products and users, and a backend API. Users can discover Amazon products aligned with their personal values, browse categories like food, crafts, apparel, and home goods, and authenticate via social login (Google, Apple, LinkedIn, Facebook, Amazon).',
+      'A comprehensive platform consisting of four interconnected applications: a cross-browser extension (Chrome, Safari, Edge), a marketplace for Ukrainian-made products, an admin panel for managing products and users, and a backend API. Users can discover Amazon products aligned with their personal values, browse categories like food, crafts, apparel, and home goods, and authenticate via social login (Google, Apple, LinkedIn, Facebook, Amazon).',
     technologies: [
       'React',
       'Node.js',
@@ -31,17 +31,17 @@ export const projects = [
       'OAuth 2.0',
       'Amazon Product Advertising API',
       'Azure',
-      'Stripe'
+      'Stripe',
     ],
     highlights: [
-        'Amazon',
+      'Amazon',
       'Chrome Extension',
       'Safari Extension',
       'Edge Extension',
       'Marketplace',
       'Social Authentication',
       'Admin Panel',
-      'Backend Services'
+      'Backend Services',
     ],
     detailedFeatures: [
       'Multi-browser support: Chrome, Safari, and Edge extensions',
@@ -49,92 +49,75 @@ export const projects = [
       'Product search on Amazon with real-time results',
       'Social authentication: Google, Apple, LinkedIn, Facebook, Amazon',
       'User registration with email verification',
-        'JWT authorization verification',
+      'JWT authorization verification',
       'Admin panel for product and user management',
       'Backend services with MongoDB database',
-      'Integration with Amazon Product Advertising API'
+      'Integration with Amazon Product Advertising API',
     ],
-    images: [
-      vc4,
-      vc5,
-      vc1,
-      vc3,
-      vc2
-    ]
+    images: [vc4, vc5, vc1, vc3, vc2],
   },
   {
     title: 'Nippi Marketer AI',
     role: 'Front-end Developer',
     description:
-    'Cloud-based marketing platform for planning, managing, and analyzing marketing campaigns. The platform provides dashboards, analytics, budgeting, project management, and reporting tools.',
+      'Cloud-based marketing platform for planning, managing, and analyzing marketing campaigns. The platform provides dashboards, analytics, budgeting, project management, and reporting tools.',
     technologies: [
       'React',
       'TypeScript',
-        'Fluent UI',
-        'Material UI',
-        "Microsoft API",
-        'Syncfusion',
+      'Fluent UI',
+      'Material UI',
+      'Microsoft API',
+      'Syncfusion',
     ],
     highlights: [
       'Marketing',
-        'Analytics',
+      'Analytics',
       'Dashboards',
       'Budget management',
       'Campaign planning',
-      'Reporting tools'
+      'Reporting tools',
     ],
-    images: [
-      nm1,
-      nm2,
-      nm3,
-      nm4,
-      nm5
-    ]
+    images: [nm1, nm2, nm3, nm4, nm5],
   },
   {
     title: 'Figure AI',
     role: 'Full-Stack Developer',
     description:
-    'Admin panel for configuring and managing custom robotic components. It enabled users to define detailed technical specifications, generate manufacturing requests, manage product data, and work with structured forms, technical documentation, tables, and PDF-based model specifications.',
+      'Admin panel for configuring and managing custom robotic components. It enabled users to define detailed technical specifications, generate manufacturing requests, manage product data, and work with structured forms, technical documentation, tables, and PDF-based model specifications.',
     technologies: [
       'Next',
       'TypeScript',
-        'Fastify',
+      'Fastify',
       'Prisma',
-        'PostgreSQL',
+      'PostgreSQL',
       'Tanstack',
     ],
     highlights: [
       'Technical specifications',
       'Manufacturing requests',
       'PDF models',
-      'Data management'
-    ]
+      'Data management',
+    ],
   },
   {
     title: 'Uplifter',
     role: 'Front-end Developer',
     description:
-    'Web-based platform for managing sports events throughout their entire lifecycle. It enables organizers to create and configure events, manage participant registrations, process results, and streamline complex workflows using dynamic forms and advanced configuration tools.',
+      'Web-based platform for managing sports events throughout their entire lifecycle. It enables organizers to create and configure events, manage participant registrations, process results, and streamline complex workflows using dynamic forms and advanced configuration tools.',
     technologies: [
       'React',
       'TypeScript',
-        'Angular',
-        'React Hook Form',
-        'Zod',
+      'Angular',
+      'React Hook Form',
+      'Zod',
       'Tanstack',
     ],
     highlights: [
       'Event management',
       'Participant registration',
       'Results processing',
-      'Dynamic Forms'
+      'Dynamic Forms',
     ],
-    images: [
-      up1,
-        up2,
-        up3,
-        up4
-    ]
-  }
+    images: [up1, up2, up3, up4],
+  },
 ];

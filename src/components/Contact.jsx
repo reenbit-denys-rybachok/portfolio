@@ -1,5 +1,5 @@
-import './Contact.css'
-import { Mail, Phone, MapPin, Linkedin, Send } from 'lucide-react'
+import './Contact.css';
+import { Mail, Phone, MapPin, Linkedin, Send } from 'lucide-react';
 
 function Contact() {
   return (
@@ -10,8 +10,9 @@ function Contact() {
           <div className="contact-info">
             <h3>Let's Work Together</h3>
             <p>
-              I'm currently available for freelance work and full-time opportunities.
-              If you have a project in mind or just want to say hello, feel free to reach out!
+              I'm currently available for freelance work and full-time
+              opportunities. If you have a project in mind or just want to say
+              hello, feel free to reach out!
             </p>
             <div className="contact-details">
               <div className="contact-item">
@@ -43,10 +44,22 @@ function Contact() {
               </div>
             </div>
             <div className="social-links">
-              <a href="https://www.linkedin.com/in/denys-rybachok-117192328/" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/denys-rybachok-117192328/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-btn"
+                aria-label="LinkedIn"
+              >
                 <Linkedin size={24} />
               </a>
-              <a href="https://t.me/drybachok" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Telegram">
+              <a
+                href="https://t.me/drybachok"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-btn"
+                aria-label="Telegram"
+              >
                 <Send size={24} />
               </a>
             </div>
@@ -54,7 +67,7 @@ function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

@@ -35,12 +35,16 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 22px;
   overflow: hidden;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .project-card:not(.expanded):hover {
   border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.08);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(59, 130, 246, 0.08);
 }
 
 .project-card.expanded {
@@ -201,7 +205,7 @@
 }
 
 .card-details-inner::before {
-  content: "";
+  content: '';
   display: block;
   height: 1px;
   margin-bottom: 28px;
@@ -230,7 +234,7 @@
 .highlight-tag {
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  background: rgba(59, 130, 246, 0.10);
+  background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.35);
   color: var(--primary-color);
   font-size: 0.82rem;
@@ -264,7 +268,7 @@
 }
 
 .features-section li::before {
-  content: "▹";
+  content: '▹';
   position: absolute;
   left: 0;
   color: var(--primary-color);
@@ -293,7 +297,9 @@
 }
 
 .card-gallery-item:hover {
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.3);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(59, 130, 246, 0.3);
   border-color: rgba(59, 130, 246, 0.35);
 }
 

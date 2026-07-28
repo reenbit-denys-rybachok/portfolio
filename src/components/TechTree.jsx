@@ -1,40 +1,79 @@
 import { motion } from 'framer-motion';
 import {
-  Code2, Layout, Palette, Box, Server,
-  Plug, Database, Link, Cloud, Bot, Braces,
+  Code2,
+  Layout,
+  Palette,
+  Box,
+  Server,
+  Plug,
+  Database,
+  Link,
+  Cloud,
+  Bot,
+  Braces,
 } from 'lucide-react';
 import './TechTree.css';
 
 /* ── Category colour palette ── */
 const CAT_COLORS = [
-  '#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981',
-  '#14b8a6', '#06b6d4', '#f97316', '#6366f1', '#a855f7',
+  '#3b82f6',
+  '#8b5cf6',
+  '#ec4899',
+  '#f59e0b',
+  '#10b981',
+  '#14b8a6',
+  '#06b6d4',
+  '#f97316',
+  '#6366f1',
+  '#a855f7',
 ];
 
 /* ── Icons per category ── */
 const CAT_ICONS = {
-  'Programming Languages':    Code2,
-  'Frontend Frameworks':      Layout,
-  'UI Libraries & Styling':   Palette,
-  'State Management':         Box,
-  'Backend Frameworks':       Server,
-  'Backend Technologies':     Plug,
-  'Database':                 Database,
-  'APIs & Integrations':      Link,
-  'Cloud & DevOps':           Cloud,
-  'AI & Tools':               Bot,
+  'Programming Languages': Code2,
+  'Frontend Frameworks': Layout,
+  'UI Libraries & Styling': Palette,
+  'State Management': Box,
+  'Backend Frameworks': Server,
+  'Backend Technologies': Plug,
+  Database: Database,
+  'APIs & Integrations': Link,
+  'Cloud & DevOps': Cloud,
+  'AI & Tools': Bot,
 };
 
 const DEFAULT_CAT_ICON = Code2;
 
 /* ── Skill-level indicator (1–3 bars) ── */
 function getSkillBars(skill) {
-  const core = ['React', 'JavaScript', 'Material UI', 'NestJS', 'REST API', 'Amazon Product Advertising API', 'Browser Extension Development', 'Codex', 'ChatGPT'];
+  const core = [
+    'React',
+    'JavaScript',
+    'Material UI',
+    'NestJS',
+    'REST API',
+    'Amazon Product Advertising API',
+    'Browser Extension Development',
+    'Codex',
+    'ChatGPT',
+  ];
   const popular = [
-    'TypeScript', 'Next.js', 'Angular', 'OAuth Authentication',
-    'Social Login Providers', 'Azure', 'Tailwind CSS', 'Fluent UI',
-    'MongoDB', 'PostgreSQL', 'TypeORM', 'Redux Toolkit', 'Git',
-    'Claude', 'Google API', 'Microsoft API',
+    'TypeScript',
+    'Next.js',
+    'Angular',
+    'OAuth Authentication',
+    'Social Login Providers',
+    'Azure',
+    'Tailwind CSS',
+    'Fluent UI',
+    'MongoDB',
+    'PostgreSQL',
+    'TypeORM',
+    'Redux Toolkit',
+    'Git',
+    'Claude',
+    'Google API',
+    'Microsoft API',
   ];
   if (core.includes(skill)) return 3;
   if (popular.includes(skill)) return 2;
@@ -76,7 +115,12 @@ function TreeCategory({ title, skills, color }) {
   return (
     <div className="tree-category-wrapper">
       <div className="tree-category" style={{ '--cat-color': color }}>
-        <IconComponent className="tree-cat-icon" size={22} strokeWidth={1.5} style={{ color }} />
+        <IconComponent
+          className="tree-cat-icon"
+          size={22}
+          strokeWidth={1.5}
+          style={{ color }}
+        />
         <span className="tree-cat-name">{title}</span>
       </div>
 

@@ -1,7 +1,7 @@
-import './Footer.css'
+import './Footer.css';
 
 function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer">
@@ -16,15 +16,21 @@ function Footer() {
             Building scalable web applications with modern technologies.
           </p>
           <div className="footer-links">
-            <a href="https://www.linkedin.com/in/denys-rybachok-117192328/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/denys-rybachok-117192328/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn
             </a>
-            <a href="https://t.me/drybachok" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://t.me/drybachok"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Telegram
             </a>
-            <a href="mailto:drybachok@gmail.com">
-              Email
-            </a>
+            <a href="mailto:drybachok@gmail.com">Email</a>
           </div>
         </div>
         <div className="footer-bottom">
@@ -32,7 +38,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

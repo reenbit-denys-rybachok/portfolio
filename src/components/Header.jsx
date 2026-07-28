@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import './Header.css'
+import { useState } from 'react';
+import './Header.css';
 
 function Header({ isMenuOpen, setIsMenuOpen }) {
   const scrollToSection = (id) => {
-    const element = document.getElementById(id)
+    const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsMenuOpen(false)
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
     }
-  }
+  };
 
   return (
     <header className="header">
@@ -30,14 +30,22 @@ function Header({ isMenuOpen, setIsMenuOpen }) {
         </button>
 
         <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#about" onClick={() => scrollToSection('about')}>About</a>
-          <a href="#skills" onClick={() => scrollToSection('skills')}>Skills</a>
-          <a href="#projects" onClick={() => scrollToSection('projects')}>Projects</a>
-          <a href="#contact" onClick={() => scrollToSection('contact')}>Contact</a>
+          <a href="#about" onClick={() => scrollToSection('about')}>
+            About
+          </a>
+          <a href="#skills" onClick={() => scrollToSection('skills')}>
+            Skills
+          </a>
+          <a href="#projects" onClick={() => scrollToSection('projects')}>
+            Projects
+          </a>
+          <a href="#contact" onClick={() => scrollToSection('contact')}>
+            Contact
+          </a>
         </nav>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
