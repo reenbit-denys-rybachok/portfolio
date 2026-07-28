@@ -70,7 +70,8 @@ const skillCategories = [
     skills: [
       'Azure',
       'Git',
-      'Browser Extension Development'
+      'Browser Extension Development',
+        'Docker'
     ]
   },
   {
