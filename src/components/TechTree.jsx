@@ -148,21 +148,35 @@ function TreeCategory({ title, skills, color }) {
   );
 }
 
-/* ── Main Tree component ── */
-function TechTree({ categories }) {
+/* ── Group section ── */
+function TreeGroup({ group, groupIndex }) {
   return (
-    <div className="tree-container">
-      {/* Categories row */}
+    <div className="tree-group">
+      <div className="tree-group-header">
+        <span className="tree-group-label">{group.title}</span>
+      </div>
+      <div className="tree-group-connector" />
       <div className="tree-categories">
-        {categories.map((cat, index) => (
+        {group.categories.map((cat, index) => (
           <TreeCategory
             key={cat.title}
             title={cat.title}
             skills={cat.skills}
-            color={CAT_COLORS[index % CAT_COLORS.length]}
+            color={CAT_COLORS[(groupIndex * 10 + index) % CAT_COLORS.length]}
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+/* ── Main Tree component ── */
+function TechTree({ groups }) {
+  return (
+    <div className="tree-container">
+      {groups.map((group, index) => (
+        <TreeGroup key={group.title} group={group} groupIndex={index} />
+      ))}
     </div>
   );
 }
