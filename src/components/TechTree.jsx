@@ -10,6 +10,10 @@ import {
   Link,
   Cloud,
   Bot,
+  ShieldCheck,
+  Wrench,
+  Kanban,
+  Container,
 } from 'lucide-react';
 import './TechTree.css';
 
@@ -37,8 +41,11 @@ const CAT_ICONS = {
   'Backend Technologies': Plug,
   Database: Database,
   'APIs & Integrations': Link,
-  'Cloud & DevOps': Cloud,
+  'Project Management & Cloud': Kanban,
+  'DevOps & Tools': Container,
   'AI & Tools': Bot,
+  'Authentication & Payments': ShieldCheck,
+  'Code Quality Tools': Wrench,
 };
 
 const DEFAULT_CAT_ICON = Code2;
@@ -55,6 +62,8 @@ function getSkillBars(skill) {
     'Browser Extension Development',
     'Codex',
     'ChatGPT',
+    'ESLint',
+    'Prettier',
   ];
   const popular = [
     'TypeScript',
@@ -73,6 +82,7 @@ function getSkillBars(skill) {
     'Claude',
     'Google API',
     'Microsoft API',
+    'Jira',
   ];
   if (core.includes(skill)) return 3;
   if (popular.includes(skill)) return 2;

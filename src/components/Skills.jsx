@@ -36,18 +36,27 @@ const skillCategories = [
       'Google API',
       'Microsoft API',
       'Amazon Product Advertising API',
-      'OAuth Authentication',
-      'Social Login Providers',
-      'Stripe',
     ],
   },
   {
-    title: 'Cloud & DevOps',
-    skills: ['Azure', 'Git', 'Browser Extension Development', 'Docker'],
+    title: 'Authentication & Payments',
+    skills: ['OAuth Authentication', 'Social Login Providers', 'Stripe'],
+  },
+  {
+    title: 'Project Management & Cloud',
+    skills: ['Jira', 'Azure'],
+  },
+  {
+    title: 'DevOps & Tools',
+    skills: ['Git', 'Docker', 'Browser Extension Development'],
   },
   {
     title: 'AI & Tools',
     skills: ['Codex', 'ChatGPT', 'Claude'],
+  },
+  {
+    title: 'Code Quality Tools',
+    skills: ['ESLint', 'Prettier', 'Husky'],
   },
 ];
 
